@@ -15,27 +15,39 @@ Based on the following images:
 SSH to the target server and run:
 ```
 git clone https://github.com/senoadiw/postgis-docker.git
+
 cd postgis-docker
+
+cp .env.sample .env
+
+# optional: edit the default db details
+nano .env
 
 # bring up the containers
 docker compose up -d
 
 # check the logs and wait a moment for the containers to initialize
 docker compose logs -f
+
 docker compose logs postgres -f
 
 # done!
 
 # run psql on the default postgres database
 docker compose exec -it postgres psql -U pguser postgres
+
 # to list the databases
 docker compose exec -it postgres psql -U pguser -l
+
 # to stop the containers
 docker compose stop
+
 # to start the containers
 docker compose up -d
+
 # to delete the containers
 docker compose down
+
 # to delete the containers and volumes (warning: this will delete ALL databases)
 docker compose down -v
 ```
